@@ -4,14 +4,8 @@ import com.api.reserva.dto.UsuarioDTO;
 import com.api.reserva.entity.Usuario;
 import com.api.reserva.enums.UsuarioRole;
 import com.api.reserva.enums.UsuarioStatus;
-<<<<<<< HEAD
-import com.api.reserva.exception.RegistroDuplicadoException;
-import com.api.reserva.exception.SemResultadosException;
-import com.api.reserva.model.UsuarioModel;
-=======
 import com.api.reserva.exception.SemResultadosException;
 import com.api.reserva.exception.UsuarioDuplicadoException;
->>>>>>> usuario
 import com.api.reserva.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,7 +31,7 @@ public class UsuarioService {
         return usuarios.stream().map(UsuarioDTO::new).toList();
 
     }
-        //Cadastrar pessoa
+        //Cadastrar pessoa=-
         public UsuarioDTO salvar (UsuarioDTO user){
             //validação de duplicidade
             if (repository.existsByEmailOrTelefone(user.getEmail(), user.getTelefone())) {

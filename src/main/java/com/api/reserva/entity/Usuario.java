@@ -5,7 +5,6 @@ import com.api.reserva.enums.UsuarioGenero;
 import com.api.reserva.enums.UsuarioRole;
 import com.api.reserva.enums.UsuarioStatus;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "tb_usuario")

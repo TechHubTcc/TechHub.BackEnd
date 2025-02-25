@@ -1,20 +1,9 @@
 package com.api.reserva.controller;
 
 import com.api.reserva.dto.UsuarioDTO;
-<<<<<<< HEAD
-import com.api.reserva.exception.RegistroDuplicadoException;
-import com.api.reserva.exception.SemResultadosException;
-import com.api.reserva.model.UsuarioModel;
-=======
-import com.api.reserva.exception.SemResultadosException;
-import com.api.reserva.exception.UsuarioDuplicadoException;
-import com.api.reserva.entity.Usuario;
->>>>>>> usuario
 import com.api.reserva.service.UsuarioService;
-import com.api.reserva.util.Messages;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
