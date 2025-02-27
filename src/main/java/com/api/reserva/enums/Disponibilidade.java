@@ -1,6 +1,6 @@
 package com.api.reserva.enums;
 
-public enum Disponivel {
+public enum Disponibilidade {
     DISPONIVEL,
     INDISPONIVEL
 }

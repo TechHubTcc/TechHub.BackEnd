@@ -2,7 +2,7 @@ package com.api.reserva.entity;
 
 import com.api.reserva.dto.AmbienteDTO;
 import com.api.reserva.enums.Aprovacao;
-import com.api.reserva.enums.Disponivel;
+import com.api.reserva.enums.Disponibilidade;
 import com.api.reserva.enums.Tipo;
 import jakarta.persistence.*;
 
@@ -12,29 +12,34 @@ public class Ambiente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(nullable = false)
     private String nome;
-    @Column(nullable = false)
+
     private String descricao;
-    @Column(nullable = false)
+
+    @Column(nullable = false, unique = true)
     private String identificacao;
+
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Tipo tipo;
+
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private Disponivel disponivel;
+    private Disponibilidade disponibilidade;
+
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Aprovacao aprovacao;
 
     public Ambiente() {}
-    public Ambiente(Long id, String nome, String descricao, String identificacao, Tipo tipo, Disponivel disponivel, Aprovacao aprovacao) {
-        this.id = id;
+    public Ambiente(String nome, String descricao, String identificacao, Tipo tipo, Disponibilidade disponibilidade, Aprovacao aprovacao) {
         this.nome = nome;
         this.descricao = descricao;
         this.identificacao = identificacao;
         this.tipo = tipo;
-        this.disponivel = disponivel;
+        this.disponibilidade = disponibilidade;
         this.aprovacao = aprovacao;
     }
 
@@ -44,7 +49,7 @@ public class Ambiente {
         descricao = ambience.getDescricao();
         identificacao = ambience.getIdentificacao();
         tipo = ambience.getTipo();
-        disponivel = ambience.getDisponivel();
+        disponibilidade = ambience.getDisponivel();
         aprovacao = ambience.getAprovacao();
     }
 
@@ -84,12 +89,12 @@ public class Ambiente {
         this.tipo = tipo;
     }
 
-    public Disponivel getDisponivel() {
-        return disponivel;
+    public Disponibilidade getDisponivel() {
+        return disponibilidade;
     }
 
-    public void setDisponivel(Disponivel disponivel) {
-        this.disponivel = disponivel;
+    public void setDisponivel(Disponibilidade disponibilidade) {
+        this.disponibilidade = disponibilidade;
     }
 
     public Aprovacao getAprovacao() {
