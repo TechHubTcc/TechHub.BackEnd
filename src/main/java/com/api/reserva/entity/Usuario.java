@@ -5,10 +5,16 @@ import com.api.reserva.enums.UsuarioGenero;
 import com.api.reserva.enums.UsuarioRole;
 import com.api.reserva.enums.UsuarioStatus;
 import jakarta.persistence.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_usuario")
-public class Usuario {
+public class Usuario implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_usuario")
@@ -23,6 +29,14 @@ public class Usuario {
     private UsuarioStatus status;
     @Enumerated(EnumType.STRING)
     private UsuarioRole role;
+
+    public Usuario(String email, String senha, UsuarioRole role) {
+
+        this.email = email;
+        this.senha = senha;
+        this.role = role;
+    }
+
 
     public Usuario() {}
 
@@ -107,5 +121,42 @@ public class Usuario {
 
     public void setRole(UsuarioRole role) {
         this.role = role;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        if(this.role == UsuarioRole.COORDENADOR) return List.of(new SimpleGrantedAuthority("ROLE_COORDENADOR"), new SimpleGrantedAuthority("ROLE_ESTUDANTE"));
+        else return List.of(new SimpleGrantedAuthority("ROLE_ESTUDANTE"));
+    }
+
+    @Override
+    public String getPassword() {
+        return senha;  // Retorna a senha criptografada, não o email
+    }
+
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return UserDetails.super.isAccountNonExpired();
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return UserDetails.super.isAccountNonLocked();
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return UserDetails.super.isCredentialsNonExpired();
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return UserDetails.super.isEnabled();
     }
 }

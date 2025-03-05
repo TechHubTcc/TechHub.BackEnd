@@ -9,26 +9,28 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 
+// Define o DTO para manipulação de usuários, com validações nos campos
 public class UsuarioDTO {
     private Long id;
-    @NotBlank(message = "Nome é obrigatório.")
+    @NotBlank(message = "Nome é obrigatório.") // Validação de campo não em branco
     private String nome;
-    @NotBlank(message = "Email é obrigatório.")
-    @Email(message = "Email inválido.")
-    @Pattern(regexp = "^(?=.{1,64}@)[A-Za-z0-9][A-Za-z0-9._-]{0,62}[A-Za-z0-9]@[A-Za-z0-9]+(-[A-Za-z0-9]+)*(\\.[A-Za-z0-9]+(-[A-Za-z0-9]+)*)*(\\.[A-Za-z]{2,})$\n"
-            , message = "Email inválido.")
+    @NotBlank(message = "Email é obrigatório.") // Validação de email não em branco
+    @Email(message = "Email inválido.") // Validação do formato do email
+    @Pattern(regexp = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$", message = "Email inválido.") // Validação de padrão do email
     private String email;
-    @NotBlank(message = "Senha é obrigatória.")
+    @NotBlank(message = "Senha é obrigatória.") // Validação de senha não em branco
     private String senha;
-    @Pattern(regexp = "^[1-9]{2}[9]{1}[0-9]{8}$", message = "Telefone inválido. Use apenas números: DDD + 9 dígitos")
+    @Pattern(regexp = "^[1-9]{2}[9]{1}[0-9]{8}$", message = "Telefone inválido.") // Validação de telefone
     private String telefone;
-    @NotBlank(message = "Gênero é obrigatório.")
+
     @Column(nullable = false)
     private UsuarioGenero genero;
     @Column(nullable = false)
     private UsuarioStatus status;
     @Column(nullable = false)
     private UsuarioRole role;
+
+    // Construtores, getters e setters para manipulação dos dados
 
     public UsuarioDTO() {
     }
@@ -56,6 +58,7 @@ public class UsuarioDTO {
         role = usuario.getRole();
     }
 
+    // Getters e Setters para manipulação dos dados do usuário
     public Long getId() {
         return id;
     }
