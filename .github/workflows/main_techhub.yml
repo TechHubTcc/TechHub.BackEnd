@@ -51,11 +51,11 @@ jobs:
           AMBIENTE_APROVACAO: "APROVADO"  # Valor do enum Aprovacao
 
       - name: Deploy to Azure Web App
-          id: deploy-to-webapp
-          uses: azure/webapps-deploy@v2
-          with:
-    app-name: 'TechHubBackEnd'
-    slot-name: 'Production'
-    publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1E9E48432FE44CEBAA7074CAC0533934 }}
-    package: '*.jar'
-    SCM_COMMAND_IDLE_TIMEOUT: 600  # Aumenta o timeout para 600 segundos (10 minutos)
+        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'TechHubBackEnd'
+          slot-name: 'Production'
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1E9E48432FE44CEBAA7074CAC0533934 }}
+          package: '*.jar'
+          SCM_COMMAND_IDLE_TIMEOUT: 600  # Aumenta o timeout para 600 segundos (10 minutos)
