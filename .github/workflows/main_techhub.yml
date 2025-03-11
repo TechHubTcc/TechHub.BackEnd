@@ -33,12 +33,12 @@ jobs:
 
       - name: Executar testes com Maven
         run: |
-          cd TechHub.BackEnd-main
+          cd TechHub.BackEnd
           mvn test
 
       - name: Compilar o projeto com Maven
         run: |
-          cd TechHub.BackEnd-main
+          cd TechHub.BackEnd
           mvn clean package
 
       - name: Upload do artefato para o job de deployment
