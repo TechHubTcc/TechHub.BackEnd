@@ -41,6 +41,7 @@ jobs:
           name: java-app
 
       - name: Set up environment variables
+        run: echo "Environment variables set"
         env:
           AMBIENTE_ID: "1"  # Exemplo de valor para o ID do ambiente
           AMBIENTE_NOME: "Sala de Reuniões"
