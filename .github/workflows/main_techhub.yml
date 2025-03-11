@@ -47,7 +47,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'TechHub'
+          app-name: 'TechHubBackEnd'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1E9E48432FE44CEBAA7074CAC0533934 }}
           package: '*.jar'
