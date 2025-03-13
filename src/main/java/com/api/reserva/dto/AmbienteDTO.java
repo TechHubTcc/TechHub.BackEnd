@@ -2,7 +2,10 @@ package com.api.reserva.dto;
 
 import com.api.reserva.entity.Ambiente;
 import com.api.reserva.enums.Aprovacao;
+import com.api.reserva.enums.DiaSemana;
 import com.api.reserva.enums.Disponibilidade;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -50,9 +53,6 @@ public class AmbienteDTO {
         identificacao = ambiente.getIdentificacao();
         disponibilidade = ambiente.getDisponibilidade();
         aprovacao = ambiente.getAprovacao();
-        if(ambiente.getTipos() != null) {
-
-        }
     }
 
     public Long getId() {

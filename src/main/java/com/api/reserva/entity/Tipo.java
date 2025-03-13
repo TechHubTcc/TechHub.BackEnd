@@ -1,9 +1,13 @@
 package com.api.reserva.entity;
 
+import com.api.reserva.dto.AmbienteDTO;
 import com.api.reserva.dto.TipoDTO;
+import com.api.reserva.enums.DiaSemana;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
