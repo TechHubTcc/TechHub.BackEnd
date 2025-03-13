@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
@@ -39,16 +39,6 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: java-app
-
-      - name: Set up environment variables
-        run: echo "Environment variables set"
-        env:
-          AMBIENTE_ID: "1"  # Exemplo de valor para o ID do ambiente
-          AMBIENTE_NOME: "Sala de Reuniões"
-          AMBIENTE_DESCRICAO: "Sala para reuniões da equipe"
-          AMBIENTE_IDENTIFICACAO: "SR001"
-          AMBIENTE_DISPONIBILIDADE: "DISPONIVEL"  # Valor do enum Disponibilidade
-          AMBIENTE_APROVACAO: "APROVADO"  # Valor do enum Aprovacao
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
