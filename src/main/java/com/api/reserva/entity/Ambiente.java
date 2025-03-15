@@ -6,6 +6,7 @@ import com.api.reserva.enums.Disponibilidade;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -40,6 +41,8 @@ public class Ambiente {
     )
     private Set<Tipo> tipos = new HashSet<>();
 
+
+
     public Ambiente() {
     }
 
@@ -58,9 +61,7 @@ public class Ambiente {
         identificacao = ambienteDTO.getIdentificacao();
         disponibilidade = ambienteDTO.getDisponibilidade();
         aprovacao = ambienteDTO.getAprovacao();
-        if(ambienteDTO.getTipos() != null) {
 
-        }
     }
 
     public Long getId() {

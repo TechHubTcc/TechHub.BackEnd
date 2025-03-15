@@ -94,7 +94,7 @@ public class TipoService {
      */
     @Transactional
     public void excluir(Long id) {
-        //busca o tipo pelo id, se não existir, lança uma exceção
+        //bucsa o tipo pelo id, se não existir, lança uma exceção
         Tipo tipo = repository.findById(id).orElseThrow(() -> new SemResultadosException("exclusão"));
         //deleta o tipo do banco
         repository.delete(tipo);
