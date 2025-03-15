@@ -2,28 +2,32 @@ package com.api.reserva.dto;
 
 import com.api.reserva.entity.Periodo;
 import com.api.reserva.enums.PeriodoAmbiente;
+import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalTime;
 
 public class PeriodoDTO {
     private Long id;
 
+    @NotNull(message = "O nome do periodo é obrigatório.")
     private PeriodoAmbiente periodoAmbiente;
-    private LocalTime inicia;
-    private LocalTime termina;
+    @NotNull(message = "O horário de início é obrigatório.")
+    private LocalTime inicio;
+    @NotNull(message = "O horário de término é obrigatório.")
+    private LocalTime termino;
 
     public PeriodoDTO() {}
 
-    public PeriodoDTO(PeriodoAmbiente periodoAmbiente, LocalTime inicia, LocalTime termina) {
+    public PeriodoDTO(PeriodoAmbiente periodoAmbiente, LocalTime inicio, LocalTime termino) {
         this.periodoAmbiente = periodoAmbiente;
-        this.inicia = inicia;
-        this.termina = termina;
+        this.inicio = inicio;
+        this.termino = termino;
     }
 
     public PeriodoDTO(Periodo periodo) {
-        periodoAmbiente = periodo.getPeriodo();
-        inicia = periodo.getInicia();
-        termina = periodo.getTermina();
+        periodoAmbiente = periodo.getPeriodoAmbiente();
+        inicio = periodo.getInicia();
+        termino = periodo.getTermina();
     }
 
     public Long getId() {
@@ -38,19 +42,19 @@ public class PeriodoDTO {
         this.periodoAmbiente = periodoAmbiente;
     }
 
-    public LocalTime getInicia() {
-        return inicia;
+    public LocalTime getInicio() {
+        return inicio;
     }
 
-    public void setInicia(LocalTime inicia) {
-        this.inicia = inicia;
+    public void setInicio(LocalTime inicio) {
+        this.inicio = inicio;
     }
 
-    public LocalTime getTermina() {
-        return termina;
+    public LocalTime getTermino() {
+        return termino;
     }
 
-    public void setTermina(LocalTime termina) {
-        this.termina = termina;
+    public void setTermino(LocalTime termino) {
+        this.termino = termino;
     }
 }
