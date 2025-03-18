@@ -26,8 +26,8 @@ public class PeriodoDTO {
 
     public PeriodoDTO(Periodo periodo) {
         periodoAmbiente = periodo.getPeriodoAmbiente();
-        inicio = periodo.getInicia();
-        termino = periodo.getTermina();
+        inicio = periodo.getInicio();
+        termino = periodo.getTermino();
     }
 
     public Long getId() {

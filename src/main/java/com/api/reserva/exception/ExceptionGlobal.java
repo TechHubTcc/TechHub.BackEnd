@@ -81,9 +81,16 @@ public class ExceptionGlobal {
      * @param e A exceção de dado duplicado capturada
      * @return ResponseEntity com status 409 (Conflict) e mensagem de erro detalhando o campo duplicado
      */
+
     @ExceptionHandler(DadoDuplicadoException.class)
     public ResponseEntity<String> handler (DadoDuplicadoException e) {
         return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(e.getMessage());
+    }
+
+    @ExceptionHandler(HorarioInvalidoException.class)
+    public ResponseEntity<String> handler (HorarioInvalidoException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                 .body(e.getMessage());
     }
 }

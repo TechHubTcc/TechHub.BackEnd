@@ -16,21 +16,21 @@ public class Periodo {
     @Enumerated(EnumType.STRING)
     private PeriodoAmbiente periodoAmbiente;
     @Column(nullable = false)
-    private LocalTime inicia;
+    private LocalTime inicio;
     @Column(nullable = false)
-    private LocalTime termina;
+    private LocalTime termino;
 
     public Periodo(){}
 
-    public Periodo(PeriodoAmbiente periodoAmbiente, LocalTime inicia, LocalTime termina) {
+    public Periodo(PeriodoAmbiente periodoAmbiente, LocalTime inicio, LocalTime termino) {
         this.periodoAmbiente = periodoAmbiente;
-        this.inicia = inicia;
-        this.termina = termina;
+        this.inicio = inicio;
+        this.termino = termino;
     }
 
-    public Periodo(PeriodoDTO period) {
-        this.inicia = period.getInicio();
-        this.termina = period.getTermino();
+    public Periodo(PeriodoDTO periodoDTO) {
+        this.inicio = periodoDTO.getInicio();
+        this.termino = periodoDTO.getTermino();
     }
 
     public Long getId() {
@@ -41,23 +41,23 @@ public class Periodo {
         return periodoAmbiente;
     }
 
-    public void setPeriodoAmbiente(PeriodoAmbiente periodo) {
-        this.periodoAmbiente = periodo;
+    public void setPeriodoAmbiente(PeriodoAmbiente periodoAmbiente) {
+        this.periodoAmbiente = periodoAmbiente;
     }
 
-    public LocalTime getInicia() {
-        return inicia;
+    public LocalTime getInicio() {
+        return inicio;
     }
 
-    public void setInicia(LocalTime inicia) {
-        this.inicia = inicia;
+    public void setInicio(LocalTime inicio) {
+        this.inicio = inicio;
     }
 
-    public LocalTime getTermina() {
-        return termina;
+    public LocalTime getTermino() {
+        return termino;
     }
 
-    public void setTermina(LocalTime termina) {
-        this.termina = termina;
+    public void setTermino(LocalTime termina) {
+        this.termino = termina;
     }
 }
