@@ -2,6 +2,7 @@ package com.api.reserva.entity;
 
 import com.api.reserva.dto.AmbienteDTO;
 import com.api.reserva.enums.Aprovacao;
+import com.api.reserva.enums.DiaSemana;
 import com.api.reserva.enums.Disponibilidade;
 import jakarta.persistence.*;
 
@@ -24,6 +25,9 @@ public class Ambiente {
     @Column(nullable = false, unique = true, length = 6)
     private String identificacao;
 
+    @Enumerated(EnumType.STRING)
+    private DiaSemana diaSemana;
+
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Disponibilidade disponibilidade;
@@ -41,10 +45,7 @@ public class Ambiente {
     )
     private Set<Tipo> tipos = new HashSet<>();
 
-
-
-    public Ambiente() {
-    }
+    public Ambiente() {}
 
     public Ambiente(String nome, String descricao, String identificacao, Disponibilidade disponibilidade, Aprovacao aprovacao) {
         this.nome = nome;
