@@ -16,7 +16,7 @@ public class HelloWorld {
         return "Hello, World!";
     }
 
-    @GetMapping("/hello")
+    @GetMapping(value = "hello")
     public String verificarBancoDeDados() {
         try {
             jdbcTemplate.execute("SELECT 1");
