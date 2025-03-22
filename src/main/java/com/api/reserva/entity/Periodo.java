@@ -22,29 +22,18 @@ public class Periodo {
 
     public Periodo(){}
 
-<<<<<<< HEAD
     public Periodo(PeriodoAmbiente periodoAmbiente, LocalTime inicio, LocalTime termino) {
         this.periodoAmbiente = periodoAmbiente;
         this.inicio = inicio;
         this.termino = termino;
     }
 
-    public Periodo(PeriodoDTO periodoDTO) {
-        this.inicio = periodoDTO.getInicio();
-        this.termino = periodoDTO.getTermino();
-=======
-    public Periodo(PeriodoAmbiente periodoAmbiente, LocalTime inicia, LocalTime termina) {
-        this.periodoAmbiente = periodoAmbiente;
-        this.inicia = inicia;
-        this.termina = termina;  
-    }
 
     public Periodo(PeriodoDTO periodoDTO) {
         id = periodoDTO.getId();
         periodoAmbiente = periodoDTO.getPeriodoAmbiente();
-        inicia = periodoDTO.getInicio();
-        termina = periodoDTO.getTermino();
->>>>>>> tcc/ambiente
+        inicio = periodoDTO.getInicio();
+        termino = periodoDTO.getTermino();
     }
 
     public Long getId() {
