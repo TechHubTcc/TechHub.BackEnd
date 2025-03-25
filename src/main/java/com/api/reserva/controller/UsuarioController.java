@@ -4,6 +4,7 @@ import com.api.reserva.dto.UsuarioDTO;
 import com.api.reserva.service.UsuarioService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,23 +30,18 @@ public class UsuarioController {
     }
 
     @PostMapping("/salvar")
-    public ResponseEntity<UsuarioDTO> salvar(@Valid @RequestBody UsuarioDTO user) {
-        return ResponseEntity.ok(service.salvar(user));
-    }
-
-    @PutMapping("/atualizartudo/{id}")
-    public ResponseEntity<UsuarioDTO> atualizarTudo(@Valid @RequestBody UsuarioDTO user, @PathVariable Long id) {
-        return ResponseEntity.ok(service.atualizartudo(user, id));
+    public ResponseEntity<String> salvar(@Valid @RequestBody UsuarioDTO user) {
+        service.salvar(user);
+        return ResponseEntity.status(HttpStatus.OK).body("Usuário cadastrado com sucesso.");
     }
 
     @PatchMapping("/atualizar/{id}")
-    public ResponseEntity<UsuarioDTO> atualizar (@Valid @RequestBody UsuarioDTO user, @PathVariable Long id){
-        return ResponseEntity.ok(service.atualizar(user, id));
-    }
+    public ResponseEntity<String> atualizar (@Valid @RequestBody UsuarioDTO user, @PathVariable Long id){
+        return ResponseEntity.status(HttpStatus.OK).body("Usuário atualizado com sucesso.");    }
 
-    @DeleteMapping("/deletar/{id}")
-    public ResponseEntity<Void> deletar(@PathVariable Long id) {
-        service.deletar(id);
-        return ResponseEntity.ok().build();
+    @DeleteMapping("/excluir/{id}")
+    public ResponseEntity<String> deletar(@PathVariable Long id) {
+        service.excluir(id);
+        return ResponseEntity.status(HttpStatus.OK).body("Usuário excluído com sucesso.");
     }
 }

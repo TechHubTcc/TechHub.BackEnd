@@ -1,6 +1,7 @@
 package com.api.reserva.dto;
 
 import com.api.reserva.entity.Ambiente;
+import com.api.reserva.entity.Categoria;
 import com.api.reserva.enums.Aprovacao;
 import com.api.reserva.enums.Disponibilidade;
 import jakarta.validation.constraints.NotBlank;
@@ -9,6 +10,7 @@ import jakarta.validation.constraints.Size;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class AmbienteDTO {
     private Long id;
@@ -27,10 +29,10 @@ public class AmbienteDTO {
     @NotNull(message = "Disponibilidade é obrigatória.")
     private Disponibilidade disponibilidade;
 
-    @NotNull(message = "Tipo de de aprovação é obrigatória.")
+    @NotNull(message = "Categoria de de aprovação é obrigatória.")
     private Aprovacao aprovacao;
 
-    private Set<TipoDTO> tipos = new HashSet<>();
+    private Set<CategoriaDTO> categorias = new HashSet<>();
 
     public AmbienteDTO() {}
 
@@ -50,9 +52,10 @@ public class AmbienteDTO {
         identificacao = ambiente.getIdentificacao();
         disponibilidade = ambiente.getDisponibilidade();
         aprovacao = ambiente.getAprovacao();
-        if(ambiente.getTipos() != null) {
-
+        for(Categoria categoria : ambiente.getCategorias()) {
+            categorias.add(new CategoriaDTO(categoria));
         }
+
     }
 
     public Long getId() {
@@ -99,11 +102,11 @@ public class AmbienteDTO {
         this.aprovacao = aprovacao;
     }
 
-    public Set<TipoDTO> getTipos() {
-        return tipos;
+    public Set<CategoriaDTO> getCategorias() {
+        return categorias;
     }
 
-    public void setTipos(Set<TipoDTO> tipos) {
-        this.tipos = tipos;
+    public void setCategorias(Set<CategoriaDTO> categorias) {
+        this.categorias = categorias;
     }
 }

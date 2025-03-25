@@ -1,14 +1,14 @@
 package com.api.reserva.entity;
 
-import com.api.reserva.dto.TipoDTO;
+import com.api.reserva.dto.CategoriaDTO;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "tb_tipo")
-public class Tipo {
+@Table(name = "tb_categoria")
+public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -16,19 +16,19 @@ public class Tipo {
     @Column(nullable = false, length = 20, unique = true)
     private String nome;
 
-    @ManyToMany(mappedBy = "tipos")
+    @ManyToMany(mappedBy = "categorias")
     private Set<Ambiente> ambientes = new HashSet<>();
 
-    public Tipo() {
+    public Categoria() {
     }
 
-    public Tipo(String nome) {
+    public Categoria(String nome) {
         this.nome = nome;
     }
 
-    public Tipo(TipoDTO tipoDTO) {
-        id = tipoDTO.getId();
-        nome = tipoDTO.getNome();
+    public Categoria(CategoriaDTO categoriaDTO) {
+        id = categoriaDTO.getId();
+        nome = categoriaDTO.getNome();
     }
 
     public Long getId() {

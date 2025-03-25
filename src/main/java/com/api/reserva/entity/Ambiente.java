@@ -6,8 +6,8 @@ import com.api.reserva.enums.Disponibilidade;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "tb_ambiente")
@@ -32,14 +32,14 @@ public class Ambiente {
     @Enumerated(EnumType.STRING)
     private Aprovacao aprovacao;
 
-    // Mapeamento muitos para muitos entre Ambiente e Tipo
+    // Mapeamento muitos para muitos entre Ambiente e Categoria
     @ManyToMany
     @JoinTable(
-            name = "tb_ambiente_tipo",
-            joinColumns = @JoinColumn(name = "ambiente_id"),
-            inverseJoinColumns = @JoinColumn(name = "tipo_id")
+            name = "tb_ambiente_categoria",
+            joinColumns = @JoinColumn(name = "id_ambiente"),
+            inverseJoinColumns = @JoinColumn(name = "id_categoria")
     )
-    private Set<Tipo> tipos = new HashSet<>();
+    private Set<Categoria> categorias = new HashSet<>();
 
 
 
@@ -61,7 +61,10 @@ public class Ambiente {
         identificacao = ambienteDTO.getIdentificacao();
         disponibilidade = ambienteDTO.getDisponibilidade();
         aprovacao = ambienteDTO.getAprovacao();
-
+//        categorias = ambienteDTO.getCategorias()
+//                .stream()
+//                .map(Categoria::new)
+//                .collect(Collectors.toSet());
     }
 
     public Long getId() {
@@ -108,11 +111,11 @@ public class Ambiente {
         this.aprovacao = aprovacao;
     }
 
-    public Set<Tipo> getTipos() {
-        return tipos;
+    public Set<Categoria> getCategorias() {
+        return categorias;
     }
 
-    public void setTipos(Set<Tipo> tipos) {
-        this.tipos = tipos;
+    public void setCategorias(Set<Categoria> categorias) {
+        this.categorias = categorias;
     }
 }

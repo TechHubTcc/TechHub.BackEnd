@@ -7,6 +7,7 @@ import com.api.reserva.enums.UsuarioStatus;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
 public class UsuarioDTO {
@@ -15,14 +16,14 @@ public class UsuarioDTO {
     private String nome;
     @NotBlank(message = "Email é obrigatório.")
     @Email(message = "Email inválido.")
-    @Pattern(regexp = "^(?=.{1,64}@)[A-Za-z0-9][A-Za-z0-9._-]{0,62}[A-Za-z0-9]@[A-Za-z0-9]+(-[A-Za-z0-9]+)*(\\.[A-Za-z0-9]+(-[A-Za-z0-9]+)*)*(\\.[A-Za-z]{2,})$\n"
-            , message = "Email inválido.")
+    @Pattern(regexp = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$",
+            message = "Email inválido.")
     private String email;
     @NotBlank(message = "Senha é obrigatória.")
     private String senha;
     @Pattern(regexp = "^[1-9]{2}[9]{1}[0-9]{8}$", message = "Telefone inválido. Use apenas números: DDD + 9 dígitos")
     private String telefone;
-    @NotBlank(message = "Gênero é obrigatório.")
+    @NotNull(message = "Gênero é obrigatório.")
     @Column(nullable = false)
     private UsuarioGenero genero;
     @Column(nullable = false)

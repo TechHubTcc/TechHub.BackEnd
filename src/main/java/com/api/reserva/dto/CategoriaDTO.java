@@ -1,33 +1,34 @@
 package com.api.reserva.dto;
 
-import com.api.reserva.entity.Tipo;
+import com.api.reserva.entity.Categoria;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
-public class TipoDTO {
+public class CategoriaDTO {
     private Long id;
 
-    @NotBlank(message = "Nome do tipo é obrigatório.")
-    @Size(min = 3, max = 20, message = "Nome do tipo deve ter entre 3 e 20 caracteres.")
+    @NotBlank(message = "Nome da categoria é obrigatório.")
+    @Size(min = 3, max = 20, message = "Nome da categoria deve ter entre 3 e 20 caracteres.")
     private String nome;
 
     private Set<AmbienteDTO> ambientes = new HashSet<>();
 
-    public TipoDTO() {
+    public CategoriaDTO() {
     }
 
-    public TipoDTO(Long id, String nome) {
+    public CategoriaDTO(Long id, String nome) {
         this.id = id;
         this.nome = nome;
-
     }
 
-    public TipoDTO(Tipo tipoDTO) {
-        id = tipoDTO.getId();
-        nome = tipoDTO.getNome();
+    public CategoriaDTO(Categoria categoria) {
+        id = categoria.getId();
+        nome = categoria.getNome();
+
     }
 
     public Long getId() {

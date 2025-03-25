@@ -2,6 +2,7 @@ package com.api.reserva.service;
 
 import com.api.reserva.dto.AmbienteDTO;
 import com.api.reserva.entity.Ambiente;
+import com.api.reserva.entity.Categoria;
 import com.api.reserva.exception.DadoDuplicadoException;
 import com.api.reserva.exception.SemResultadosException;
 import com.api.reserva.repository.AmbienteRepository;
@@ -11,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * Serviço responsável pelo gerenciamento de operações relacionadas a entidade Ambiente.
@@ -59,6 +61,10 @@ public class AmbienteService {
             throw new DadoDuplicadoException(dadoDuplicado);
         }
         Ambiente ambiente = new Ambiente(ambienteDTO);
+        ambiente.setCategorias(ambienteDTO.getCategorias()
+                .stream()
+                .map(Categoria::new)
+                .collect(Collectors.toSet()));
         return new AmbienteDTO(repository.save(ambiente));
     }
 
