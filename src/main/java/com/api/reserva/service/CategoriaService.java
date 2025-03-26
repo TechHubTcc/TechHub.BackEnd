@@ -1,16 +1,16 @@
 package com.api.reserva.service;
 
-        import com.api.reserva.dto.CategoriaDTO;
-        import com.api.reserva.entity.Categoria;
-        import com.api.reserva.exception.DadoDuplicadoException;
-        import com.api.reserva.exception.SemResultadosException;
-        import com.api.reserva.repository.CategoriaRepository;
-        import org.springframework.beans.factory.annotation.Autowired;
-        import org.springframework.stereotype.Service;
-        import org.springframework.transaction.annotation.Transactional;
+import com.api.reserva.dto.CategoriaDTO;
+import com.api.reserva.entity.Categoria;
+import com.api.reserva.exception.DadoDuplicadoException;
+import com.api.reserva.exception.SemResultadosException;
+import com.api.reserva.repository.CategoriaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-        import java.util.List;
-        import java.util.Objects;
+import java.util.List;
+import java.util.Objects;
 
         /**
          * Serviço responsável pelo gerenciamento de operações relacionadas a entidade Categoria.

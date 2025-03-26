@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("ambiente")
-public class AmbienteController {
+public class  AmbienteController {
     @Autowired
     AmbienteService service;
 

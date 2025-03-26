@@ -10,7 +10,6 @@ import jakarta.validation.constraints.Size;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class AmbienteDTO {
     private Long id;

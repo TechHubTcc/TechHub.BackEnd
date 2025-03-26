@@ -36,11 +36,12 @@ public class UsuarioController {
     }
 
     @PatchMapping("/atualizar/{id}")
-    public ResponseEntity<String> atualizar (@Valid @RequestBody UsuarioDTO user, @PathVariable Long id){
+    public ResponseEntity<String> atualizar (@Valid @RequestBody UsuarioDTO usuarioDTO, @PathVariable Long id){
+        service.atualizar(usuarioDTO, id);
         return ResponseEntity.status(HttpStatus.OK).body("Usuário atualizado com sucesso.");    }
 
     @DeleteMapping("/excluir/{id}")
-    public ResponseEntity<String> deletar(@PathVariable Long id) {
+    public ResponseEntity<String> excluir(@PathVariable Long id) {
         service.excluir(id);
         return ResponseEntity.status(HttpStatus.OK).body("Usuário excluído com sucesso.");
     }

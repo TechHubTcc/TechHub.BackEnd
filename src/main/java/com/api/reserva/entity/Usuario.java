@@ -38,15 +38,15 @@ public class Usuario {
         this.role = role;
     }
 
-    public Usuario(UsuarioDTO user) {
-        id = user.getId();
-        nome = user.getNome();
-        email = user.getEmail();
-        senha = user.getSenha();
-        telefone = user.getTelefone();
-        genero = user.getGenero();
-        status = user.getStatus();
-        role = user.getRole();
+    public Usuario(UsuarioDTO usuarioDTO) {
+        id = usuarioDTO.getId();
+        nome = usuarioDTO.getNome();
+        email = usuarioDTO.getEmail();
+        senha = usuarioDTO.getSenha();
+        telefone = usuarioDTO.getTelefone();
+        genero = usuarioDTO.getGenero();
+        status = usuarioDTO.getStatus();
+        role = usuarioDTO.getRole();
     }
 
     public Long getId() {

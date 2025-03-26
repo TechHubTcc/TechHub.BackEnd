@@ -21,7 +21,7 @@ public class UsuarioService {
     //Listar uma pessoa
     public UsuarioDTO listar(Long id) {
         return new UsuarioDTO(repository.findById(id)
-                .orElseThrow(() -> new SemResultadosException()));
+                .orElseThrow(SemResultadosException::new));
     }
 
     //Listar todas as pessoas
@@ -30,7 +30,6 @@ public class UsuarioService {
         return usuarios.stream().map(UsuarioDTO::new).toList();
     }
 
-    //Cadastrar pessoa=-
     public void salvar(UsuarioDTO usuarioDTO) {
         //validação de duplicidade
         if (repository.existsByEmailOrTelefone(usuarioDTO.getEmail(), usuarioDTO.getTelefone())) {
@@ -62,14 +61,10 @@ public class UsuarioService {
             usuario.setSenha(usuarioDTO.getSenha());
         }
 
-        if (usuarioDTO.getTelefone().length() == 11) {
-            if (!usuarioDTO.getTelefone().equals(usuario.getTelefone())) {
-                String telefone = usuarioDTO.getTelefone();
-                telefone.replace(" ", "");
-                telefone.replace("-", "");
-                usuario.setTelefone(usuarioDTO.getTelefone());
-            }
-        }
+       String telefoneLimpo = usuarioDTO.getTelefone().replace(" ", "").replace("-", "");
+       if (telefoneLimpo.length() == 11 && !telefoneLimpo.equals(usuario.getTelefone())) {
+           usuario.setTelefone(telefoneLimpo);
+       }
 
         if (!usuarioDTO.getGenero().equals(usuario.getGenero())) {
             usuario.setGenero(usuarioDTO.getGenero());
