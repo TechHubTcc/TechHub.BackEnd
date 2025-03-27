@@ -5,7 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController(value = "hello")
+@RestController
 public class HelloWorld {
 
     @Autowired
@@ -16,7 +16,7 @@ public class HelloWorld {
         return "Hello, World!";
     }
 
-    @GetMapping(value = "hello-world")
+    @GetMapping(value = "hello")
     public String verificarBancoDeDados() {
         try {
             jdbcTemplate.execute("SELECT 1");
