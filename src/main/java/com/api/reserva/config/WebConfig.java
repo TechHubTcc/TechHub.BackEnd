@@ -10,10 +10,14 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("https://techhub-cze9exb3bmh7axhx.brazilsouth-01.azurewebsites.net")
+                .allowedOrigins(
+                        "https://techhub-cze9exb3bmh7axhx.brazilsouth-01.azurewebsites.net",
+                        "http://127.0.0.1:5500"
+                )
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true)
                 .maxAge(3600);
     }
 }
+
